@@ -48,8 +48,8 @@ pinout:
   uio[3]: "in11"
   uio[4]: ""
   uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[6]: "sel"
+  uio[7]: "wr_en"
 
 # Do not change!
 yaml_version: 6
