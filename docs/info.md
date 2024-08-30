@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+The documentation will be updated after the competiton has concluded.
 
 ## How to test
 
-Explain how to use your project
+Connect the output to the osciloscope and verify if the frequency and duty cycle correspond with your expectation.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+The external hardware will be only the wire used for the pwm_out and 14 inputs (uController, digital pattern generator etc.) to set the period, duty cycle, set and wr_en signals.
