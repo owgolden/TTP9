@@ -9,7 +9,8 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-The documentation will be updated after the competiton has concluded.
+This design intend to be used like a PWM generator. It contains two 12-bit registers: one for duty cycle(duty_reg) respectively one for period(period_reg). When sel signal is set to "0" the duty_reg will be selected and when sel is "1" the period_reg is selected. If values for duty/period is set at the input, the value is written in the regs only after wr_en is set to "1". For duty cycle, will be used only 7 bits(from 0 to 6) the rest of the bits beeing 0 hardcoded.
+the value for period_rescan be set between 2-4095(on 12 bits).
 
 ## How to test
 
