@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2024 Your Name
+ * Copyright (c) 2024 Samuel Matea
  * SPDX-License-Identifier: Apache-2.0
  */
 
 `default_nettype none
 
-module tt_um_example (
+module tt_um_samuelm_pwm_generator (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -17,11 +17,20 @@ module tt_um_example (
 );
 
   // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+    assign uo_out[7:1] = 0;    // only uo_out[0] is used as output for pwm_out
+    assign uio_out = 0;        
+    assign uio_oe[7:0]  = 8'b0011_0000;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+    wire _unused = &{ena, uio_in[5:4], 1'b0};
 
+    pwm_generator pwm_generator_inst(
+        .in         ({uio_in[3:0],ui_in[7:0]}),
+        .sel        (uio_in[6]),
+        .wr_en      (uio_in[7]),
+        .pwm_out    (uo_out[0]),
+        .clk        (clk),
+        .rst_n      (rst_n)
+    );
+    
 endmodule
